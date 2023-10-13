@@ -1,0 +1,47 @@
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    
+}
+.nav-box{
+    grid-column: span 5;
+    background-color: white;
+    height: 100px;
+    border-style: solid;
+    border-color: lightgray;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    
+}
+.side-box{
+    grid-column: span 1;
+    background-color: gray;
+    height: 100%;
+    
+}
+.main-box{
+    grid-column: span 4;
+    background-color: whitesmoke;
+    border-color: lightgray;
+    border-style: solid;
+    border-top: 0;
+    
+}
+.meny-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-right: 50px;
+}
+.food{
+    grid-column: span 1;
+    height: 200px;
+    margin-left: 50px;
+    margin-top: 5px;
+    border-style: solid;
+}
+.footer{
+    grid-column: span 5;
+    background-color: lightblue;
+}
+
