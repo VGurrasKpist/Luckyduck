@@ -101,7 +101,7 @@
         },
         "allergies" :["gluten"],
         "meatTypes" :["chicken","pork"],
-        "price": [139,85],
+        "price": [139,85]
       },
 
     {
@@ -118,9 +118,8 @@
     },
     "allergies" :[""],
     "meatTypes" :["Seafood"],
-    "price": [159],
-
-    } 
+    "price": 159
+    },
   {
     "id": 9,
     "title" : 
@@ -135,8 +134,8 @@
     },
     "allergies" :["gluten","lactose"],
     "meatTypes" :["Chicken"],
-    "price":[169],
-  }
+    "price":169
+  },
   {
     "id": 10,
     "title" : 
@@ -151,8 +150,8 @@
     },
     "allergies" :["lactose"],
     "meatTypes" :["Seafood"],
-    "price":[189,109],
-  }
+    "price":[189,109]
+  },
   {
     "id": 11,
       "title" : 
@@ -167,7 +166,7 @@
       },
       "allergies" :[""],
       "meatTypes" :["Beef"],
-      "price":[259]
+      "price":259
   }
 ]
 
