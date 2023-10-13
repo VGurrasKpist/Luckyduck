@@ -1,0 +1,263 @@
+{
+    "menuSV": [
+      {
+        "id": 1,
+        "name": "FLÄSKFILEPLANKA",
+        "description": "Duchesse mos, rödvinssky, bearnaise och stekta grönsaker",
+        "maincourse": "Fläsk",
+        "checkboxGluten": "Glutenfri",
+        "checkboxLactose": "Laktosfri",
+        "glutenfree": "yes",
+        "lactosefree": "no",
+        "price": 149
+        
+      },
+      {
+        "id": 2,
+        "name": "BIFF RYDBERG",
+        "description": "Tärnad oxfilé, potatis och gullök, serveras med dijonsenapskräm och rå äggula",
+        "maincourse": "Nöt",
+        "checkboxGluten": "Glutenfri",
+        "checkboxLactose": "Laktosfri",
+        "glutenfree": "yes",
+        "lactosefree": "yes",
+        "price": 175
+
+      },
+      {
+        "id": 3,
+        "name": "SPICY CHEESEBURGER",
+        "description": "180gram högrevsburgare med sallad, tomat, picklad rödlök, cheddarost med jalapenos och barbecuesås i briochebröd med pommes och rökig ranch-aioli",
+        "maincourse": "Nöt",
+        "checkboxGluten": "Glutenfri",
+        "checkboxLactose": "Laktosfri",
+        "glutenfree": "no",
+        "lactosefree": "yes",
+        "price": 155
+      },
+      {
+        "id": 4,
+        "name": "HALLOUMI BURGARE",
+        "description": "Sallad, tomat, rödlök och guacamole i briochebröd med pommes och aioli",
+        "maincourse": "Vegetariskt",
+        "checkboxGluten": "Glutenfri",
+        "checkboxLactose": "Laktosfri",
+        "glutenfree": "no",
+        "lactosefree": "yes",
+        "price": 155
+      },
+      {
+        "id": 5,
+        "name": "FISH'N CHIPS",
+        "description": "“Beer-batter” panerad torskrygg med dill-aioli, halstrad citron och pommes",
+        "maincourse": "Havsmat",
+        "checkboxGluten": "Glutenfri",
+        "checkboxLactose": "Laktosfri",
+        "glutenfree": "no",
+        "lactosefree": "yes",
+        "price": 149
+      },
+      {
+        "id": 6,
+        "name": "HUSETS SCHNITZEL",
+        "description": "200 gram välbankad schnitzel ”Borås största” med atron, kapris, anjovis, kryddsmör och rödvinssky serveras med stekt potatis",
+        "maincourse": "Fläsk",
+        "checkboxGluten": "Glutenfri",
+        "checkboxLactose": "Laktosfri",
+        "glutenfree": "no",
+        "lactosefree": "no",
+        "price": 175
+      },
+      {
+        "id": 7,
+        "name": "CAESARSALLAD",
+        "description": "Varm kyckling, bacon, krutonger, parmesan samt caesardressing",
+        "maincourse": "Kyckling",
+        "checkboxGluten": "Glutenfri",
+        "checkboxLactose": "Laktosfri",
+        "glutenfree": "no",
+        "lactosefree": "yes",
+        "price": 139,
+        "halfPrice": 85
+      },
+      {
+        "id": 8,
+        "name": "LAXSALLAD MED QUINOA",
+        "description": "Grillad lax med quinoa, cocktailtomater, blandsallad, morot julienne, rödlök med en vinägrett",
+        "maincourse": "Havsmat",
+        "checkboxGluten": "Glutenfri",
+        "checkboxLactose": "Laktosfri",
+        "glutenfree": "yes",
+        "lactosefree": "yes",
+        "price": 159
+      },
+      {
+        "id": 9,
+          "name": "Krämig kycklingpasta",
+          "description": "Kyckling, pasta, grädde, soltorkade tomater, basilika, grönsaker och parmesan",
+          "maincourse": "Kyckling",
+          "checkboxGluten": "Glutenfri",
+          "checkboxLactose": "Laktosfri",
+          "glutenfree": "no",
+          "lactosefree": "no",
+          "price": 169
+      },
+      {
+          "id": 10,
+          "name": "Musslor al Cava",
+          "description": "Ångkokta musslor i en krämig sås gjord på cava, toppas med cream fraiche och jalapenos, serveras med pommes och aioli",
+          "maincourse": "Havsmat",
+          "checkboxGluten": "Glutenfri",
+          "checkboxLactose": "Laktosfri",
+          "glutenfree": "yes",
+          "lactosefree": "no",
+          "price": 189,
+          "halfPrice": 109
+      },
+      {
+          "id": 11,
+          "name": "Grillad Oxfile",
+          "description": "200g oxfilé, rödvinssås, frästa grönsaker serveras med potatisgratäng (går att få med pommes och bearnaise)",
+          "maincourse": "Nöt",
+          "checkboxGluten": "Glutenfri",
+          "checkboxLactose": "Laktosfri",
+          "glutenfree": "no",
+          "lactosefree": "no",
+          "price": 259
+      }
+    ],
+
+    "menuENG": [
+      {
+        "id": 1,
+        "name": "PORK TENDERLOIN PLANK STEAK",
+        "description": "Duchesse potatoes, a redwine reduction, béarnaise and fried vegetables",
+        "maincourse": "Pork",
+        "checkboxGluten": "Gluten-free",
+        "checkboxLactose": "Lactose-free",
+        "glutenfree": "yes",
+        "lactosefree": "no",
+        "price": 149
+      },
+      {
+        "id": 2,
+        "name": "BIFF RYDBERG",     
+        "description": "Diced beef tenderloin, potatoes and onion, served with dijonmustard and raw egg yolk",
+        "maincourse": "Beef",
+        "checkboxGluten": "Gluten-free",
+        "checkboxLactose": "Lactose-free",
+        "glutenfree": "yes",
+        "lactosefree": "yes",
+        "price": 175
+
+      },
+      {
+        "id": 3,
+        "name": "SPICY CHEESEBURGER",
+        "description": "180gram prime rib burger with lettuce, tomato, pickled red onion, cheddar cheese with jalapenos and barbecue sauce in brioche bread with fries and smokey ranch-aioli",
+        "maincourse": "Beef",
+        "checkboxGluten": "Gluten-free",
+        "glutenfree": "no",
+        "lactosefree": "yes",
+        "price": 155
+      },
+      {
+        "id": 4,
+        "name": "HALLOUMI BURGARE",
+        "description": "Lettuce, tomato, red onion and guacamole in brioche bread with fries and aioli",
+        "maincourse": "Vegetarian",
+        "checkboxGluten": "Gluten-free",
+        "checkboxLactose": "Lactose-free",
+        "glutenfree": "no",
+        "lactosefree": "yes",
+        "price": 155
+      },
+      {
+        "id": 5,
+        "name": "FISH'N CHIPS",
+        "description": "Beer-batter breaded cod loins with dill-aioli, seared lemon and fries",
+        "maincourse": "Seafood",
+        "checkboxGluten": "Gluten-free",
+        "checkboxLactose": "Lactose-free",
+        "glutenfree": "no",
+        "lactosefree": "yes",
+        "price": 149
+      },
+      {
+        "id": 6,
+        "name": "SCHNITZEL",
+        "description": "200 grams of meat ”Borås biggest” served with lemon, capers, anchovy, herb butter and a redwine reduction with fried potatoes",
+        "maincourse": "Pork",
+        "checkboxGluten": "Gluten-free",
+        "checkboxLactose": "Lactose-free",
+        "glutenfree": "no",
+        "lactosefree": "no",
+        "price": 175
+      },
+      {
+        "id": 7,
+        "name": "CAESAR SALAD",
+        "description": "Grilled chicken, bacon, croutons, parmesan and caesardressing",
+        "maincourse": "Chicken",
+        "checkboxGluten": "Gluten-free",
+        "checkboxLactose": "Lactose-free",
+        "glutenfree": "no",
+        "lactosefree": "yes",
+        "price": 139,
+        "halfPrice": 85
+      },
+      {
+        "id": 8,
+        "name": "SALMONSALLAD WITH QUINOA",
+        "description": "Grilled salmon with quinoa, cocktail tomatoes, julianne carrot, mixed salad, red onion with vinegrette",
+        "maincourse": "Seafood",
+        "checkboxGluten": "Gluten-free",
+        "checkboxLactose": "Lactose-free",
+        "glutenfree": "yes",
+        "lactosefree": "yes",
+        "price": 159
+      },
+      {
+        "id": 9,
+          "name": "Creamy Chickenpasta",
+          "description": "Chicken, pasta, cream, sundried tomatoes, basil, vegetables and parmesan",
+          "maincourse": "Chicken",
+          "checkboxGluten": "Gluten-free",
+          "checkboxLactose": "Lactose-free",
+          "glutenfree": "no",
+          "lactosefree": "no",
+          "price": 169
+      },
+      {
+          "id": 10,
+          "name": "Mussles al Cava",
+          "description": "Steamed mussels in a creamy cava sauce, topped with cream fraiche and jalapenos , served with fries and aioli",
+          "maincourse": "Seafood",
+          "checkboxGluten": "Gluten-free",
+          "checkboxLactose": "Lactose-free",
+          "glutenfree": "yes",
+          "lactosefree": "no",
+          "price": 189,
+          "halfPrice": 109
+      },
+      {
+          "id": 11,
+          "name": "Grilled beef tenderloin",
+          "description": "200g beef tenderloin, redwine reduction, fried vegetables and potato gratin(possible with fries and bearnais)",
+          "maincourse": "Beef",
+          "checkboxGluten": "Gluten-free",
+          "checkboxLactose": "Lactose-free",
+          "glutenfree": "no",
+          "lactosefree": "no",
+          "price": 259
+        }
+    ]
+  }
+  
+ 
+  
+
+ 
+  
+
+
