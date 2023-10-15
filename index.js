@@ -1,6 +1,3 @@
-const menuENG;
-const menuSV;
-
 function fetchData(callback) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
