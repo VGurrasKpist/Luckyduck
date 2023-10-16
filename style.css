@@ -28,18 +28,7 @@
     border-top: 0;
     
 }
-.meny-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-right: 50px;
-}
-.food{
-    grid-column: span 1;
-    height: 200px;
-    margin-left: 50px;
-    margin-top: 5px;
-    border-style: solid;
-}
+
 .footer{
     grid-column: span 5;
     background-color: lightblue;
