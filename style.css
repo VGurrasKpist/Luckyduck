@@ -1,24 +1,28 @@
+.footer{
+    grid-column: span 5;
+    background-color: lightblue;
+}
+html{
+    font-family: 'Poppins', sans-serif;
+}
+
 .grid-container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    
 }
 .nav-box{
     grid-column: span 5;
-    background-color: white;
-    height: 100px;
+    height: 1%;
     border-style: solid;
     border-color: lightgray;
     border-left: 0;
     border-top: 0;
     border-right: 0;
-    
 }
 .side-box{
     grid-column: span 1;
-    background-color: gray;
+    background-color: white;
     height: 100%;
-    
 }
 .main-box{
     grid-column: span 4;
@@ -26,7 +30,6 @@
     border-color: lightgray;
     border-style: solid;
     border-top: 0;
-    
 }
 .meny-container{
     display: grid;
@@ -38,10 +41,80 @@
     height: 200px;
     margin-left: 50px;
     margin-top: 5px;
-    border-style: solid;
-}
-.footer{
-    grid-column: span 5;
-    background-color: lightblue;
 }
 
+
+/* //------------------- */
+
+.topContainer{
+    display: flex;
+    justify-content: space-between;  
+    height: 12rem;
+    background-color: #e4fff700;
+    border-color:black;
+    padding: 2px;    
+}
+
+.btn{
+    margin-right:1rem;
+    margin-top:1rem;
+    display: flex;
+    justify-content: space-around;
+    font-family: 'Space Grotesk', sans-serif;
+    float: left;
+
+}
+
+#irishDuck{
+    display: flex;
+    justify-self: left;
+    margin-left: 2rem;
+    margin-top: 2rem;
+    height: 9rem;
+    border-radius: 8px;
+    border: 2px solid black;
+
+}
+#h1{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-self: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 30pt;   
+    background-color: rgba(240, 248, 255, 0.637);
+    border-radius: 50px;
+    padding: 5px;
+    margin-top: 5px;
+    height: 10rem;
+}
+
+h2{
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    font-family:"'Poppins', sans-serif";
+}
+
+ p{
+    text-align: center;
+    margin: 8px;
+    margin-bottom: 15px;
+    
+  }
+
+#video-bg{
+    position:absolute;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#allergiesH2{
+    font-family: 'Poppins', sans-serif;
+}
+form{
+    text-align: center;
+}
