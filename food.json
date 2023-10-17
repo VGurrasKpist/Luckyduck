@@ -120,7 +120,6 @@
 "allergies" :[""],
 "meatTypes" :["seafood"],
 "price": 159
-
 }, 
 {
 "id": 9,
@@ -172,8 +171,3 @@
   "price":259
 }
 ]
-
-
-
-
-

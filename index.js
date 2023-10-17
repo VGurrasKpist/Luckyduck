@@ -308,3 +308,4 @@ function checkLanguage() {
   console.error("something went wrong with retriving data")
   console.log(error)
 })
+//hejsan
