@@ -74,14 +74,7 @@ function translateEnglish(){
         newTitle.innerHTML=currentValue.title.en;
         divCart.id ="cart";
         divCart.innerHTML ="Your shop cart is empty!";
-
-        if (Array.isArray(currentValue.price)) {
-          // If price is an array ([189, 109])
-          priceDisplay.innerHTML = "<br>" + currentValue.price[0] + " kr";
-        } else {
-          // If price isn't an array (99)
-          priceDisplay.innerHTML = "<br>" + currentValue.price + " kr";
-        }
+        priceDisplay.innerHTML = "<br>" + currentValue.price + " kr";
 
         // Event Listeners
         buyButton.addEventListener("click", function () {
@@ -192,14 +185,8 @@ function translateSwedish(){
         newTitle.innerHTML=currentValue.title.sv;
         divCart.id ="cart";
         divCart.innerHTML ="Din kundvagn är tom!";
+        priceDisplay.innerHTML = "<br>" + currentValue.price + " kr";
 
-        if (Array.isArray(currentValue.price)) {
-          // Om priset är en array (t.ex. [189, 109])
-          priceDisplay.innerHTML = "<br>" + currentValue.price[0] + " kr";
-        } else {
-          // Om priset inte är en array (t.ex. 99)
-          priceDisplay.innerHTML = "<br>" + currentValue.price + " kr";
-        }
 
         // Event Listeners
         buyButton.addEventListener("click", function () {
@@ -267,7 +254,7 @@ function translateSwedish(){
   labelVeg4.textContent="Fläsk";
   labelVeg5.textContent="Fisk & Skaldjur";
   labelAllergy.textContent="Glutenfritt";
-  labelAllergy2.textContent="Laktosfriss";
+  labelAllergy2.textContent="Laktosfritt";
   mainCourseH2.textContent="Huvudrätt";
   allergiesH2.textContent="Allergier";
   h1menu.textContent="Meny";
