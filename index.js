@@ -28,6 +28,7 @@ const isEnglish=localStorage.getItem("isEnglish");
 
 var htmlElement = document.documentElement;
 
+
 //-----------------FETCH----------
 
 fetch('food.json').then((response) => {
@@ -37,8 +38,8 @@ fetch('food.json').then((response) => {
 .then((data) => {
 console.log(data);
 fullMenu=data;
-currentFood = data;  
-fixaElins=data;
+
+
 const veggiBox = document.getElementById('veg'); 
 const chickenBox = document.getElementById('chicken'); 
 const beefBox = document.getElementById('beef'); 
@@ -51,12 +52,11 @@ const placeForFood = document.getElementById('placeHolderForFood');
 
 //----------------------ELINS BOXAR---------------------------
 // add eventlisteners to all the filterboxes . They should each add values to an filterArray
-
 porkBox.addEventListener("change", () =>{ 
   //when change: if veggiebox already checked put it in the foodlist 
   if(porkBox.checked){ 
         addMeattype("pork");  
-        filterFoodList();
+        filterFoodList();        
   } else{ //else remove it from the list 
     removeMeattype("pork");
     filterFoodList();
@@ -66,9 +66,11 @@ porkBox.addEventListener("change", () =>{
 seaBox.addEventListener("change", () =>{ 
   //when change: if veggiebox already checked put it in the foodlist 
   if(seaBox.checked){ 
+    console.log("Seafood checkbox is checked")
         addMeattype("seafood");  
         filterFoodList();        
   } else{ //else remove it from the list 
+    console.log("Seafood checkbox is not checked")
     removeMeattype("seafood");
     filterFoodList();
   } 
@@ -78,7 +80,6 @@ seaBox.addEventListener("change", () =>{
 beefBox.addEventListener("change", () =>{ 
   //when change: if veggiebox already checked put it in the foodlist 
   if(beefBox.checked){ 
-
         addMeattype("beef");  
         filterFoodList();        
         
@@ -93,6 +94,7 @@ veggiBox.addEventListener("change", () =>{
   if(veggiBox.checked){ 
         addMeattype("vegetarian");  
         filterFoodList();
+        console.log(veggiBox.checked);
         
         
   } else{ //else remove it from the list 
@@ -105,11 +107,10 @@ chickenBox.addEventListener("change", () =>{
   //when change: if veggiebox already checked put it in the foodlist 
   if(chickenBox.checked){ 
         addMeattype("chicken");  
-        console.log("chicken")
         filterFoodList();
      
   } else{ //else remove it from the list 
-        removeMeattype("chicken");
+    removeMeattype("chicken");
     filterFoodList();
   } 
 }); 
@@ -118,7 +119,6 @@ chickenBox.addEventListener("change", () =>{
 lactoseBox.addEventListener("change", () => {
   //add to list, else remove from list
   if(lactoseBox.checked){ 
-
     addAllergie("lactose"); 
     filterFoodList();
   } 
@@ -127,29 +127,23 @@ lactoseBox.addEventListener("change", () => {
     filterFoodList();
   } 
 }); 
-
 glutenBox.addEventListener("change", () => {
   //add to list, else remove from list
   if(glutenBox.checked){ 
     addAllergie("gluten"); 
-
     filterFoodList();
   } 
   else{ 
-    filterFoodList();
     removeAllergie("gluten");
-
+    filterFoodList();
   } 
 }); 
-
 
 //functions to add or remove allergies from allergielist 
 function addAllergie(allergie){
   //add to list 
-      allergiesInput.push(allergie);
+      allergiesInput.unshift(allergie);
       filterFoodList();
-      console.log(allergie);
-      console.log(allergiesInput);
 }
 function removeAllergie(allergie){
 //remove the allergie from list
@@ -158,11 +152,11 @@ function removeAllergie(allergie){
   filterFoodList();
   }
 
-
 //funtions for meattypes
 function addMeattype(meatofchoice){
 //add to list 
 meatTypes.unshift(meatofchoice);
+console.log(meatTypes);
 }
 
 function removeMeattype(meatofchoice){
@@ -171,50 +165,44 @@ const indexOfMeat = meatTypes.indexOf(meatofchoice);
 meatTypes.splice(indexOfMeat, 1); 
 }
 
-//________________--------____----__--------______--
 
- //modify the current foodlist with current filters
- function filterFoodList() {
-  foodCard.innerHTML = "";
-  let filteredFood = fullMenu;
-
-  // Check if any meat type checkbox is unchecked
-  if (meatTypes.length > 0) {
-    filteredFood = filteredFood.filter((food) => {
-      return meatTypes.some((selectedMeat) => food.meatTypes.includes(selectedMeat));
-    });
+function filterFoodList() {
+    foodCard.innerHTML = "";
+    let filteredFood = fullMenu;
+  
+    // Check if any allergy checkbox is unchecked
+    if (allergiesInput.length > 0) {
+      filteredFood = filteredFood.filter((food) => {
+        return !allergiesInput.some((allergie) => {
+          return food.allergies.includes(allergie);
+        });
+      });
+    }
+    
+  
+    if (meatTypes.length > 0) {
+      filteredFood = filteredFood.filter((food) => {
+        return meatTypes.some((selectedMeat) => food.meatTypes.includes(selectedMeat));
+      });
+    }
+  
+    data = filteredFood;
+  
+    // Check if no filters are selected, then display all food items
+    if (allergiesInput.length === 0 && meatTypes.length === 0) {
+      data = fullMenu;
+    }
+  
+    console.log(data);
+    checkLanguage();
   }
-
-  // Check if any allergy checkbox is unchecked, and also consider items with no allergies
-  if (allergiesInput.length > 0) {
-    filteredFood = filteredFood.filter((food) => {
-      if (food.allergies.length === 0) {
-        return true; // Allow items with no allergies
-      }
-      return allergiesInput.every((allergie) => food.allergies.includes(allergie));
-    });
-  }
-
-  data = filteredFood;
-
-  // Check if no filters are selected, then display all food items
-  if (meatTypes.length === 0 && allergiesInput.length === 0) {
-    data = fullMenu;
-  }
-
-  console.log(data);
-  translateSwedish();
-}
-
+  
+  
 
 
 //-------------------------------------------A+A Börjar här---------------------
 //---------------------------------------Translate to English function
 function translateEnglish(){
-  // HÄR ÄR LÖSNINGEN!!!
-  // if(data.length==0){
-  //   data=fullMenu;
-  // }
   htmlElement.setAttribute("lang", "en"); 
   h1menu.innerHTML = 'Lucky<br>Duck';
 
@@ -338,13 +326,11 @@ function translateEnglish(){
 
 //-----------------------------------Translate to Swedish Function
   function translateSwedish(){
-    // if(data.length==0){
-    //   data=fullMenu;
-    // }
+  console.log(data);
   htmlElement.setAttribute("lang", "sv"); 
   h1menu.innerHTML = 'Lucky<br>Duck';
 
-  data.forEach(function(currentValue,index){
+   data.forEach(function(currentValue,index){
     const foodTD=document.createElement("div");
     const newTitle=document.createElement("h2");
     const newDescription=document.createElement("p");
@@ -487,7 +473,7 @@ function checkLanguage() {
   }
   
   // Attach the checkLanguage function to the onload event
-  onload=checkLanguage();
+  onload=checkLanguage;
   
   // Language dropdown selection
   enDropDown.addEventListener("click", function () {
@@ -505,6 +491,25 @@ function checkLanguage() {
     clearForfoodTD();
     translateSwedish();
   });
+  
+
+
+//Sortera efter pris
+
+
+// function sortedPrise(){
+//   const sortedFoods = data.sort((a, b) => (a.price > b.price ? 1 : -1));
+//   console.log(sortedFoods);
+// }
+
+// sortedPrise()
+
+// function sortedPrise2(){
+//   const sortedFoods = data.sort((a, b) => (a.price > b.price ? -1 : 1));
+//   console.log(sortedFoods);
+// }
+
+// sortedPrise2()
 
 
 
