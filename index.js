@@ -277,6 +277,12 @@ function translateEnglish(){
     foodTD.appendChild(newDescription).style.fontFamily="'Poppins', sans-serif";
     newDescription.appendChild(menuChoice);
     foodCard.appendChild(foodTD);
+    foodTD.style.maxWidth="80ch";
+    foodTD.style.paddingTop="3rem";
+    foodTD.style.paddingBottom="1rem";
+    foodTD.style.paddingLeft="2rem";
+    foodTD.style.paddingRight="1rem";
+
     menuChoice.appendChild(deleteButton);
     menuChoice.appendChild(timesCourseDisplay);
     menuChoice.appendChild(buyButton);
@@ -420,7 +426,6 @@ priceDescendingBox.addEventListener("change", () => {
     const foodTD=document.createElement("div");
     const newTitle=document.createElement("h2");
     const newDescription=document.createElement("p");
-
     const menuChoice=document.createElement("div");
     const buyButton=document.createElement("input");
     const deleteButton=document.createElement("input");
@@ -447,6 +452,10 @@ spans.forEach(span => {
     foodTD.appendChild(newDescription).style.fontFamily="'Poppins', sans-serif";
     newDescription.appendChild(menuChoice);
     foodCard.appendChild(foodTD);
+    foodTD.style.paddingTop="3rem";
+    foodTD.style.paddingBottom="1rem";
+    foodTD.style.paddingLeft="2rem";
+    foodTD.style.paddingRight="1rem";
 
 
     menuChoice.appendChild(deleteButton);
