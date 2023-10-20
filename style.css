@@ -195,9 +195,6 @@ p{
 
 }
 
-#allergiesH2{
-    font-family: 'Poppins', sans-serif;
-}
 form{
     text-align: center;
 }
@@ -229,6 +226,48 @@ input[type=button]:hover
 
     display: block;
 
+}
+#sortingH2{
+    display: block;
+    font-size: 18pt;
+    margin-bottom: -10px;
+}
+
+#mainCourseForm{
+float:left;
+text-align: left;
+}
+
+#mainAllergyForm2{
+display: block;
+float: left;
+}
+
+#mainSortingForm{
+    display: block;
+    float: left;
+}
+#mainCourseH2{
+display: flex;
+text-wrap:nowrap;
+justify-self: left;
+font-size: 18pt;
+margin-bottom: -10px;
+
+
+}
+#allergiesH2{
+font-family: 'Poppins', sans-serif;
+display: block;
+font-size: 18pt;
+margin-bottom: -10px;
+
+
+
+}
+
+#sortingH2{
+    display: block;
 }
 
 #dropDownFilter{
@@ -265,9 +304,12 @@ input[type=button]:hover
     box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.2);
     padding: 10px 40px 10px 40px;
     z-index: 10;
+
 }
 
-
+#show{
+    float:left;
+}
 
 
 @media(max-width:700px){
