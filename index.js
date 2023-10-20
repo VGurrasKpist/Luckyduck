@@ -39,7 +39,6 @@ fetch('food.json').then((response) => {
 })
 
 .then((data) => {
-console.log(data);
 fullMenu=data;
 
 
@@ -116,7 +115,6 @@ chickenBox.addEventListener("change", () =>{
       removeMeattype("vegetarian");
     }
         addMeattype("chicken");  
-        console.log("chicken")
         filterFoodList();
      
   } else{ //else remove it from the list 
@@ -129,7 +127,6 @@ veggiBox.addEventListener("change", () =>{
   //when change: if veggiebox already checked put it in the foodlist 
   if(veggiBox.checked){ 
     if(meatTypes.includes("vegetarian")) clearMeatList();
-        meatTypes=[];
         beefBox.checked = false;
         chickenBox.checked = false;
         seaBox.checked = false;
@@ -141,6 +138,7 @@ veggiBox.addEventListener("change", () =>{
   } else{ //else remove it from the list 
     removeMeattype("vegetarian");
     filterFoodList();
+
   } 
 }); 
 
@@ -180,8 +178,7 @@ function addAllergie(allergie){
   //add to list 
       allergiesInput.push(allergie);
       filterFoodList();
-      console.log(allergie);
-      console.log(allergiesInput);
+   
 }
 function removeAllergie(allergie){
 //remove the allergie from list
@@ -210,27 +207,20 @@ meatTypes.splice(indexOfMeat, 1);
   foodCard.innerHTML = "";
   let filteredFood = fullMenu;
   if(meatTypes.length===0){
-    meatTypes=["beef", "pork", "seafood", "chicken"];
+    meatTypes=["beef", "pork", "seafood", "chicken", "vegetarian"];
   }
-  console.log(filteredFood) ;
-  console.log( "i filterfood, steg 1");
   //first remove all food with any of allergie of choice
     allergiesInput.forEach((allergie) => {
       filteredFood = filteredFood.filter((food) => {
-        console.log(filteredFood);
-        console.log("i filterfood, steg 2 när den precis ska filtrerea bort allergi");
+      
         return !food.allergies.includes(allergie);
       });
     })
     // Filtering foods by selectedMeat
     filteredFood = filteredFood.filter((food) => {
-      console.log(filteredFood);
-      console.log("i filterfood, steg 3, när den ska filtrera fram köttval");
-      console.log("köttval:");
-      console.log(meatTypes);
+   
       return meatTypes.some(selectedMeat => food.meatTypes.includes(selectedMeat));
     });
-  console.log();
   data = filteredFood;
 
   // Check if no filters are selected, then display all food items
@@ -403,7 +393,6 @@ priceAscendingBox.addEventListener("change", () => {
   if(priceAscendingBox.checked){ 
     sortedAscending();
     priceDescendingBox.checked = false;
-    console.log(data);
     checkLanguage();
   } 
   else{ 
@@ -416,7 +405,6 @@ priceDescendingBox.addEventListener("change", () => {
   if(priceDescendingBox.checked){ 
     sortedDescending();
     priceAscendingBox.checked = false;
-    console.log(data)
     checkLanguage();
   } 
   else{ 
@@ -426,7 +414,6 @@ priceDescendingBox.addEventListener("change", () => {
 });
 //-----------------------------------Translate to Swedish Function
   function translateSwedish(){
-  console.log(data);
   htmlElement.setAttribute("lang", "sv"); 
   h1menu.innerHTML = 'Lucky<br>Duck';
 
@@ -595,7 +582,6 @@ function checkLanguage() {
   
   // Language dropdown selection
   enDropDown.addEventListener("click", function () {
-    console.log("User choose English");
     localStorage.clear();
     localStorage.setItem("isEnglish", "true");
     clearForfoodTD();
@@ -603,7 +589,6 @@ function checkLanguage() {
   });
   
   svDropDown.addEventListener("click", function () {
-    console.log("User choose Swedish");
     localStorage.clear();
     localStorage.setItem("isSwedish", "true");
     clearForfoodTD();
