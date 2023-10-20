@@ -298,7 +298,14 @@ function translateEnglish(){
         newTitle.innerHTML=currentValue.title.en;
         divCart.id ="cart";
         divCart.innerHTML ="Your shop cart is empty!";
-        priceDisplay.innerHTML = "<br>" + currentValue.price + " kr";
+        priceDisplay.innerHTML = "<br>" + currentValue.price + " kr";      
+        
+        
+        buyButton.style.marginLeft="1rem"
+        buyButton.style.marginTop="1rem"
+        deleteButton.style.marginRight="1rem";
+        deleteButton.style.marginTop="1rem";
+
 
         // Event Listeners
         buyButton.addEventListener("click", function () {
@@ -452,10 +459,12 @@ spans.forEach(span => {
     foodTD.appendChild(newDescription).style.fontFamily="'Poppins', sans-serif";
     newDescription.appendChild(menuChoice);
     foodCard.appendChild(foodTD);
+    foodTD.style.maxWidth="80ch";
     foodTD.style.paddingTop="3rem";
     foodTD.style.paddingBottom="1rem";
     foodTD.style.paddingLeft="2rem";
     foodTD.style.paddingRight="1rem";
+    
 
 
     menuChoice.appendChild(deleteButton);
@@ -475,7 +484,16 @@ spans.forEach(span => {
         divCart.id ="cart";
         divCart.innerHTML ="Din kundvagn är tom!";
         priceDisplay.innerHTML = "<br>" + currentValue.price + " kr";
-        // priceDisplay.innerHTML = + currentValue.price + " kr &#11044;<br/>" ;
+
+        buyButton.style.marginLeft="1rem"
+        buyButton.style.marginTop="1rem"
+        deleteButton.style.marginRight="1rem";
+        deleteButton.style.marginTop="1rem";
+
+
+
+
+
 
 
         // Event Listeners
