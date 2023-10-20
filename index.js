@@ -1,29 +1,35 @@
-
-var data="";
+var data = [];
 let sumTotal =0;
 let cartItems =[];
+var meatTypes = []; 
+var fullMenu =[];
+var allergiesInput = []; //all allergies in an list
 let divCart;
 var svDropDown=document.getElementById("sv")
 var enDropDown=document.getElementById("en")
 var foodCard=document.querySelector(".meny-container");
 document.querySelector("h2").style.fontFamily="'Poppins', sans-serif";
-document.querySelector("h3").style.fontFamily="'Poppins', sans-serif";
 const labelVeg=document.querySelector("#label1");
 const labelVeg2=document.querySelector("#label2");
 const labelVeg3=document.querySelector("#label3");
 const labelVeg4=document.querySelector("#label4");
 const labelVeg5=document.querySelector("#label5");
 
+const priceAscendingBox = document.getElementById('ascending')
+const priceDescendingBox = document.getElementById('descending')
+
 const labelAllergy=document.querySelector("#allergy1");
 const labelAllergy2=document.querySelector("#allergy2");
 
 const mainCourseH2=document.querySelector("#mainCourseH2");
 const allergiesH2=document.querySelector("#allergiesH2");
-divCart =document.createElement("div");
+divCart=document.createElement("div");
 
 const h1menu=document.querySelector("h1");
 const isSwedish=localStorage.getItem("isSwedish");
 const isEnglish=localStorage.getItem("isEnglish");
+
+var htmlElement = document.documentElement;
 
 
 //-----------------FETCH----------
@@ -34,11 +40,174 @@ fetch('food.json').then((response) => {
 
 .then((data) => {
 console.log(data);
+fullMenu=data;
 
 
+const veggiBox = document.getElementById('veg'); 
+const chickenBox = document.getElementById('chicken'); 
+const beefBox = document.getElementById('beef'); 
+const porkBox = document.getElementById('pork'); 
+const seaBox = document.getElementById('sea'); 
+const glutenBox = document.getElementById('glu');
+const lactoseBox = document.getElementById('laktos');
+const placeForFood = document.getElementById('placeHolderForFood');
 
-//Translate to English function
+
+//----------------------ELINS BOXAR---------------------------
+// add eventlisteners to all the filterboxes . They should each add values to an filterArray
+porkBox.addEventListener("change", () =>{ 
+  //when change: if veggiebox already checked put it in the foodlist 
+  if(porkBox.checked){ 
+        addMeattype("pork");  
+        filterFoodList();        
+  } else{ //else remove it from the list 
+    removeMeattype("pork");
+    filterFoodList();
+  } 
+});
+// add eventlisteners to all the filterboxes . They should each add values to an filterArray
+seaBox.addEventListener("change", () =>{ 
+  //when change: if veggiebox already checked put it in the foodlist 
+  if(seaBox.checked){ 
+    console.log("Seafood checkbox is checked")
+        addMeattype("seafood");  
+        filterFoodList();        
+  } else{ //else remove it from the list 
+    console.log("Seafood checkbox is not checked")
+    removeMeattype("seafood");
+    filterFoodList();
+  } 
+});
+
+
+beefBox.addEventListener("change", () =>{ 
+  //when change: if veggiebox already checked put it in the foodlist 
+  if(beefBox.checked){ 
+        addMeattype("beef");  
+        filterFoodList();        
+        
+  } else{ //else remove it from the list 
+    removeMeattype("beef");
+    filterFoodList();
+  } 
+});
+
+veggiBox.addEventListener("change", () =>{ 
+  //when change: if veggiebox already checked put it in the foodlist 
+  if(veggiBox.checked){ 
+        addMeattype("vegetarian");  
+        filterFoodList();
+        console.log(veggiBox.checked);
+        
+        
+  } else{ //else remove it from the list 
+    removeMeattype("vegetarian");
+    filterFoodList();
+  } 
+}); 
+// add eventlisteners to all the filterboxes . They should each add values to an filterArray
+chickenBox.addEventListener("change", () =>{ 
+  //when change: if veggiebox already checked put it in the foodlist 
+  if(chickenBox.checked){ 
+        addMeattype("chicken");  
+        filterFoodList();
+     
+  } else{ //else remove it from the list 
+    removeMeattype("chicken");
+    filterFoodList();
+  } 
+}); 
+
+
+lactoseBox.addEventListener("change", () => {
+  //add to list, else remove from list
+  if(lactoseBox.checked){ 
+    addAllergie("lactose"); 
+    filterFoodList();
+  } 
+  else{ 
+    removeAllergie("lactose");
+    filterFoodList();
+  } 
+}); 
+glutenBox.addEventListener("change", () => {
+  //add to list, else remove from list
+  if(glutenBox.checked){ 
+    addAllergie("gluten"); 
+    filterFoodList();
+  } 
+  else{ 
+    removeAllergie("gluten");
+    filterFoodList();
+  } 
+}); 
+
+//functions to add or remove allergies from allergielist 
+function addAllergie(allergie){
+  //add to list 
+      allergiesInput.unshift(allergie);
+      filterFoodList();
+}
+function removeAllergie(allergie){
+//remove the allergie from list
+  const indexOfAllergie = allergiesInput.indexOf(allergie); 
+  allergiesInput.splice(indexOfAllergie, 1); 
+  filterFoodList();
+  }
+
+//funtions for meattypes
+function addMeattype(meatofchoice){
+//add to list 
+meatTypes.unshift(meatofchoice);
+console.log(meatTypes);
+}
+
+function removeMeattype(meatofchoice){
+//remove the allergie from list
+const indexOfMeat = meatTypes.indexOf(meatofchoice); 
+meatTypes.splice(indexOfMeat, 1); 
+}
+
+
+function filterFoodList() {
+    foodCard.innerHTML = "";
+    let filteredFood = fullMenu;
+  
+    // Check if any allergy checkbox is unchecked
+    if (allergiesInput.length > 0) {
+      filteredFood = filteredFood.filter((food) => {
+        return !allergiesInput.some((allergie) => {
+          return food.allergies.includes(allergie);
+        });
+      });
+    }
+    
+  
+    if (meatTypes.length > 0) {
+      filteredFood = filteredFood.filter((food) => {
+        return meatTypes.some((selectedMeat) => food.meatTypes.includes(selectedMeat));
+      });
+    }
+  
+    data = filteredFood;
+  
+    // Check if no filters are selected, then display all food items
+    if (allergiesInput.length === 0 && meatTypes.length === 0) {
+      data = fullMenu;
+    }
+  
+    console.log(data);
+    checkLanguage();
+  }
+  
+  
+
+
+//-------------------------------------------A+A Börjar här---------------------
+//---------------------------------------Translate to English function
 function translateEnglish(){
+  htmlElement.setAttribute("lang", "en"); 
+  h1menu.innerHTML = 'Lucky<br>Duck';
 
   data.forEach(function(currentValue,index){
     const foodTD=document.createElement("div");
@@ -50,9 +219,18 @@ function translateEnglish(){
     const timesCourseDisplay=document.createElement("span");
     const priceDisplay=document.createElement("span");
     let timesCourse=0;
-    
-    
   
+
+    const newClassName = 'custom-font';
+    const spans = document.querySelectorAll('span');
+
+    spans.forEach(span => {
+    span.classList.add(newClassName);
+
+    buyButton.classList.add(newClassName);
+});
+    
+
     foodCard.appendChild(foodTD);
     foodTD.appendChild(newTitle).style.fontFamily="'Poppins', sans-serif";
     newDescription.innerHTML=currentValue.description.en;
@@ -118,6 +296,7 @@ function translateEnglish(){
       }
       updateCart();
     }
+
     //Update CartItems beginning
     function updateCart() {
       sumTotal =0;
@@ -145,36 +324,96 @@ function translateEnglish(){
   labelAllergy2.textContent="Dairy-free";
   mainCourseH2.textContent="Main Course";
   allergiesH2.textContent="Allergies";
-  h1menu.textContent="Menu";
+  
 }
 
-//Translate to Swedish Function
-function translateSwedish(){
+//-----------------------------------Sort price Funktion
+function unsorted(){
+  const unsortedFoods = data.toSorted((a, b) => (a.id > b.id ? 1 : -1));
+  data=unsortedFoods;
+  clearForfoodTD();
+}
+function sortedAscending(){
+  const sortedFoods = data.toSorted((a, b) => (a.price > b.price ? 1 : -1));
+  data = sortedFoods
 
-  data.forEach(function(currentValue,index){
+  clearForfoodTD();
+}
+function sortedDescending(){
+   const sortedFalling = data.toSorted((a, b) => (a.price > b.price ? -1 : 1));
+  data = sortedFalling
+  clearForfoodTD();
+}
+priceAscendingBox.addEventListener("change", () => {
+
+  if(priceAscendingBox.checked){ 
+    sortedAscending();
+    priceDescendingBox.checked = false;
+    console.log(data);
+    checkLanguage();
+  } 
+  else{ 
+    unsorted();
+    checkLanguage();
+  } 
+}); 
+priceDescendingBox.addEventListener("change", () => {
+
+  if(priceDescendingBox.checked){ 
+    sortedDescending();
+    priceAscendingBox.checked = false;
+    console.log(data)
+    checkLanguage();
+  } 
+  else{ 
+    unsorted();
+    checkLanguage();
+  } 
+});
+//-----------------------------------Translate to Swedish Function
+  function translateSwedish(){
+  console.log(data);
+  htmlElement.setAttribute("lang", "sv"); 
+  h1menu.innerHTML = 'Lucky<br>Duck';
+
+   data.forEach(function(currentValue,index){
     const foodTD=document.createElement("div");
     const newTitle=document.createElement("h2");
     const newDescription=document.createElement("p");
+
     const menuChoice=document.createElement("div");
     const buyButton=document.createElement("input");
     const deleteButton=document.createElement("input");
     const timesCourseDisplay=document.createElement("span");
     const priceDisplay=document.createElement("span");
+
     let timesCourse=0;
+
     
-    
-  
+    //Make price font smaller
+const newClassName = 'custom-font';
+const spans = document.querySelectorAll('span');
+
+spans.forEach(span => {
+    span.classList.add(newClassName);
+
+    buyButton.classList.add(newClassName);
+});
+
+
     foodCard.appendChild(foodTD);
     foodTD.appendChild(newTitle).style.fontFamily="'Poppins', sans-serif";
     newDescription.innerHTML=currentValue.description.sv;
     foodTD.appendChild(newDescription).style.fontFamily="'Poppins', sans-serif";
     newDescription.appendChild(menuChoice);
     foodCard.appendChild(foodTD);
+
     menuChoice.appendChild(buyButton);
     menuChoice.appendChild(timesCourseDisplay);
     menuChoice.appendChild(deleteButton);
     menuChoice.appendChild(priceDisplay);
     document.querySelector(".side-box").appendChild(divCart);
+
 
         //-- Olika "värden för vår svenska funktion"
         buyButton.type="button";
@@ -186,7 +425,6 @@ function translateSwedish(){
         divCart.id ="cart";
         divCart.innerHTML ="Din kundvagn är tom!";
         priceDisplay.innerHTML = "<br>" + currentValue.price + " kr";
-
 
         // Event Listeners
         buyButton.addEventListener("click", function () {
@@ -257,8 +495,6 @@ function translateSwedish(){
   labelAllergy2.textContent="Laktosfritt";
   mainCourseH2.textContent="Huvudrätt";
   allergiesH2.textContent="Allergier";
-  h1menu.textContent="Meny";
-
 }
 
 var clear=document.querySelector(".meny-container");
@@ -302,6 +538,26 @@ function checkLanguage() {
     translateSwedish();
   });
   
+
+
+//Sortera efter pris
+
+
+// function sortedPrise(){
+//   const sortedFoods = data.sort((a, b) => (a.price > b.price ? 1 : -1));
+//   console.log(sortedFoods);
+// }
+
+// sortedPrise()
+
+// function sortedPrise2(){
+//   const sortedFoods = data.sort((a, b) => (a.price > b.price ? -1 : 1));
+//   console.log(sortedFoods);
+// }
+
+// sortedPrise2()
+
+
 
 
 }).catch(function(error){
