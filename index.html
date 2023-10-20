@@ -21,7 +21,7 @@
                     <source src="videos/food.mp4" type="video/mp4">
                 </video>
                 <img src="images/lucky_duck.png" id="irishDuck" alt="">
-                <div id="h1"><h1>Meny</h1></div>
+                <div id="h1"><h1></h1></div>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Language</button>
@@ -35,28 +35,39 @@
         <div class="side-box">
             <div class="filter-container">
                 <div class="over-box">
-                    <h3>Filter</h3>
-                </div>
-                <div class="filter-box">
-                    <h2 id="mainCourseH2">Huvudrätt</h2>
-                    <form action="" id="mainCourseForm">
-                        <input type="checkbox" id="veg" name="veg" value="vegetarian">
-                        <label id="label1" for="veg"> Vegetariskt</label><br>
-                        <input type="checkbox" id="chiken" name="chicken" value="chicken">
-                        <label id="label2" for="chicken">Kyckling</label><br>
-                        <input type="checkbox" id="beef" name="beef" value="beef">
-                        <label  id="label3" for="beef"> Nötkött</label><br>
-                        <input type="checkbox" id="pork" name="pork" value="pork">
-                        <label  id="label4" for="pork"> Fläsk</label><br>
-                        <input  type="checkbox" id="sea" name="sea" value="sea">
-                      <!-- !!!!-->  <label id="label5" for="Seafood"> Fisk & Skaldjur</label><br><br>
-                      </form>
-                      <h2 id="allergiesH2">Allegier</h2>
-                      <form action="">
-                        <input type="checkbox" id="glu" name="glu" value="gluten">
-                        <label id="allergy1" for="glu"> Glutenfritt</label><br>
-                        <input type="checkbox" id="laktos" name="laktos" value="laktos">
-                        <label id="allergy2" for="laktos"> Laktosfritt</label><br><br>
+                    <div class="dropdown"  id="dropDownFilter">
+                 <button id="filterButton" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
+                 <ul class="dropdown-menu">
+                     <h2 id="mainCourseH2">Huvudrätt</h2>
+                 <form action="" id="mainCourseForm">
+                     <input type="checkbox" id="veg" name="veg" value="vegetarian">
+                     <label id="label1" for="veg"> Vegetariskt</label><br>
+                     <input type="checkbox" id="chicken" name="chicken" value="chicken">
+                     <label id="label2" for="chicken">Kyckling</label><br>
+                     <input type="checkbox" id="beef" name="beef" value="beef">
+                     <label  id="label3" for="beef"> Nötkött</label><br>
+                     <input type="checkbox" id="pork" name="pork" value="pork">
+                     <label  id="label4" for="pork"> Fläsk</label><br>
+                     <input  type="checkbox" id="sea" name="sea" value="sea">
+                     <label id="label5" for="Seafood"> Fisk & Skaldjur</label><br><br>
+                   </form>
+                   <h2 id="allergiesH2">Allegier</h2>
+                   <form action="">
+                     <input type="checkbox" id="glu" name="glu" value="gluten">
+                     <label id="allergy1" for="glu"> Glutenfritt</label><br>
+                     <input type="checkbox" id="laktos" name="laktos" value="laktos">
+                     <label id="allergy2" for="laktos"> Laktosfritt</label><br><br>
+                   </form>  
+                   <h2 id="sortingH2">Pris</h2>
+                   <form action="">
+                     <input type="checkbox" id="ascending" name="ascending" value="ascending">
+                     <label id="ascendingChoice" for="ascending">Stigande</label><br>
+                     <input type="checkbox" id="descending" name="descending" value="descending">
+                     <label id="descendingChoice" for="descending">Fallande</label><br><br>
+                   </form>   
+             </div>
+
+             
 
                       </form>
                 </div>
