@@ -328,6 +328,9 @@ function translateEnglish(){
 }
 
 //-----------------------------------Sort price Funktion
+//---The functions start by sorting the array by comparing the items against each other one on one and giving them a number, 1 or -1.
+//---Then it sorts them after how many points it got. The one with most points is at the top and the with least is at the bottom. It saves this new list in a new array.
+//---It then says that data is equal to this new array before calling on clearForfoodTD.
 function unsorted(){
   const unsortedFoods = data.toSorted((a, b) => (a.id > b.id ? 1 : -1));
   data=unsortedFoods;
@@ -344,6 +347,12 @@ function sortedDescending(){
   data = sortedFalling
   clearForfoodTD();
 }
+
+//---This listens fo a click on the checkbox with the right id. If it detects a click one of two things will happen.
+//---If the box is checked in then it will start by calling on the function above. It will prosed by making the other sorting checkbox un checked.
+//---It logs data so we can see if anything goes wrong before calling on checkLanguages so everything is shown on screen.
+
+//---If it detects that the box is uncheked by the user then it will run unsorted so everything is sorted by ID. It then calls on checkLanguage so the site can refresh.
 priceAscendingBox.addEventListener("change", () => {
 
   if(priceAscendingBox.checked){ 
