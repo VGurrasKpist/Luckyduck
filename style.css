@@ -1,9 +1,30 @@
 .footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     grid-column: span 5;
-    background-color: lightblue;
+    background-color: whitesmoke;
+    height: 6rem;
+    font-family: 'Poppins', sans-serif;
 }
+h4{
+    margin-top: 1rem;
+    font-size: 1.6rem;
+}
+#luckyFooter{
+
+color: rgb(247, 134, 41)
+}
+#smallLucky{
+
+padding: 3px 0rem 3px 0rem;   
+height: 100%;
+    border-radius: 8px;
+}
+
 html{
     font-family: 'Poppins', sans-serif;
+    background-color: white;
 }
 
 .grid-container{
@@ -23,24 +44,32 @@ html{
 .side-box{
     grid-column: span 1;
     background-color: white;
-    height: 100%;
     text-align: center;
-    padding-left: 1rem;
+    padding-left: 2rem;
+    margin-top: 12rem;
+    z-index:1;
 
     
 }
-.main-box{
+/* .main-box{
     grid-column: span 4;
     background-color: whitesmoke;
     border-color: lightgray;
-    border-style: solid;
     border-top: 0;
+    margin-left: 3rem;
+    z-index: 0;
+    height: 100%;
 
-}
+
+} */
 .meny-container{
+    grid-column: span 4;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding-right: 50px;
+    margin-top: 11rem;
+    z-index: 0;
+    background-color: whitesmoke;
+
 }
 .food{
     grid-column: span 1;
@@ -66,17 +95,22 @@ html{
     font-weight: 700;
     border: 2px solid black;
     border-radius: 5px;
+    text-wrap: wrap;
 }
 
 /* //------------------- */
 
 .topContainer{
+    position:fixed;
+    width: 100%;
     display: flex;
     justify-content: space-between;  
     height: 12rem;
     background-color: #e4fff700;
     border-color:black;
-    padding: 2px;    
+    padding: 2px;
+    z-index: 5; 
+
 }
 
 .btn{
@@ -89,7 +123,6 @@ html{
 }
 
 #irishDuck{
-    position: fixed;
     display: flex;
     justify-self: left;
     margin-left: 2rem;
@@ -100,17 +133,17 @@ html{
 
 }
 #h1{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    align-self: center;
+   
     font-family: 'Poppins', sans-serif;
     font-size: 30pt;   
     background-color: rgba(240, 248, 255, 0.637);
     border-radius: 5px;
     padding: 3rem;
-    margin-top: 5px;
+    margin-top: 20px;
     height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h2{
@@ -129,9 +162,13 @@ p{
     position:absolute;
     left: 0;
     width: 100%;
-    height: 70%;
+    height: 100%;
     object-fit: cover;
     z-index: -1;
+    border-bottom: 2px solid black;
+    margin-top: -10px;
+    margin-bottom: 20px;
+
 }
 
 #allergiesH2{
@@ -191,21 +228,21 @@ input[type=button]:hover
     color: black;
     padding-left: 6rem;
     padding-right: 6rem;
+    margin-top: 4rem;
   }
 
   .dropdown-toggle::after {
     display: none;
   }
 
-
-
   .dropdown-menu {
     background-color: rgb(255, 255, 255);
     border: 1.5px dashed black;
     box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.2);
     padding: 10px 40px 10px 40px;
-   text-align: left;
+    z-index: 10;
 }
+
 
 
 
@@ -215,7 +252,7 @@ input[type=button]:hover
         margin-top: 10rem;
         margin-left: 1rem;
         margin-right: 1rem;
-    background-color: white;
+        background-color: white;
         font-weight: 700;
         border: 2px solid black;
         border-radius: 5px;
@@ -226,7 +263,7 @@ input[type=button]:hover
     }
     .meny-container{
     display:inline;
-    text-align: center;
+    text-align:center;
     
     }
     
@@ -286,4 +323,19 @@ input[type=button]:hover
     .nav-box{
     border: none;   
     }
+    .footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: whitesmoke;
+        font-family: 'Poppins', sans-serif;
+    }
+    #smallLucky{
+        padding: 3px 0rem 3px 0rem;   
+        height: 100%;
+        border-radius: 8px;
+        }
+        h4{
+            font-size: 1.1rem;
+        }
     }

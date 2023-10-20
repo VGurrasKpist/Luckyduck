@@ -55,11 +55,17 @@ const placeForFood = document.getElementById('placeHolderForFood');
 
 //----------------------ELINS BOXAR---------------------------
 // add eventlisteners to all the filterboxes . They should each add values to an filterArray
+
 porkBox.addEventListener("change", () =>{ 
   //when change: if veggiebox already checked put it in the foodlist 
   if(porkBox.checked){ 
+    if(meatTypes.includes("pork")) clearMeatList();
+      if(veggiBox.checked){
+        veggiBox.checked = false;
+        removeMeattype("vegetarian");
+      } 
         addMeattype("pork");  
-        filterFoodList();        
+        filterFoodList();
   } else{ //else remove it from the list 
     removeMeattype("pork");
     filterFoodList();
@@ -69,11 +75,14 @@ porkBox.addEventListener("change", () =>{
 seaBox.addEventListener("change", () =>{ 
   //when change: if veggiebox already checked put it in the foodlist 
   if(seaBox.checked){ 
-    console.log("Seafood checkbox is checked")
+    if(meatTypes.includes("seafood")) clearMeatList();
+    if(veggiBox.checked){
+      veggiBox.checked = false;
+      removeMeattype("vegetarian");
+    }
         addMeattype("seafood");  
         filterFoodList();        
   } else{ //else remove it from the list 
-    console.log("Seafood checkbox is not checked")
     removeMeattype("seafood");
     filterFoodList();
   } 
@@ -83,6 +92,11 @@ seaBox.addEventListener("change", () =>{
 beefBox.addEventListener("change", () =>{ 
   //when change: if veggiebox already checked put it in the foodlist 
   if(beefBox.checked){ 
+    if(meatTypes.includes("beef")) clearMeatList();
+    if(veggiBox.checked){
+      veggiBox.checked = false;
+      removeMeattype("vegetarian");
+    }
         addMeattype("beef");  
         filterFoodList();        
         
@@ -92,28 +106,40 @@ beefBox.addEventListener("change", () =>{
   } 
 });
 
+
+chickenBox.addEventListener("change", () =>{ 
+  //when change: if veggiebox already checked put it in the foodlist 
+  if(chickenBox.checked){ 
+    if(meatTypes.includes("chicken")) clearMeatList();
+    if(veggiBox.checked){
+      veggiBox.checked = false;
+      removeMeattype("vegetarian");
+    }
+        addMeattype("chicken");  
+        console.log("chicken")
+        filterFoodList();
+     
+  } else{ //else remove it from the list 
+        removeMeattype("chicken");
+    filterFoodList();
+  } 
+}); 
+//special for veggiebox => it must unbox all other 
 veggiBox.addEventListener("change", () =>{ 
   //when change: if veggiebox already checked put it in the foodlist 
   if(veggiBox.checked){ 
+    if(meatTypes.includes("vegetarian")) clearMeatList();
+        meatTypes=[];
+        beefBox.checked = false;
+        chickenBox.checked = false;
+        seaBox.checked = false;
+        porkBox.checked = false;
         addMeattype("vegetarian");  
         filterFoodList();
-        console.log(veggiBox.checked);
         
         
   } else{ //else remove it from the list 
     removeMeattype("vegetarian");
-    filterFoodList();
-  } 
-}); 
-// add eventlisteners to all the filterboxes . They should each add values to an filterArray
-chickenBox.addEventListener("change", () =>{ 
-  //when change: if veggiebox already checked put it in the foodlist 
-  if(chickenBox.checked){ 
-        addMeattype("chicken");  
-        filterFoodList();
-     
-  } else{ //else remove it from the list 
-    removeMeattype("chicken");
     filterFoodList();
   } 
 }); 
@@ -130,23 +156,32 @@ lactoseBox.addEventListener("change", () => {
     filterFoodList();
   } 
 }); 
+
 glutenBox.addEventListener("change", () => {
   //add to list, else remove from list
   if(glutenBox.checked){ 
     addAllergie("gluten"); 
+
     filterFoodList();
   } 
   else{ 
-    removeAllergie("gluten");
     filterFoodList();
+    removeAllergie("gluten");
+
   } 
 }); 
+
+function clearMeatList(){
+  meatTypes=[];
+}
 
 //functions to add or remove allergies from allergielist 
 function addAllergie(allergie){
   //add to list 
-      allergiesInput.unshift(allergie);
+      allergiesInput.push(allergie);
       filterFoodList();
+      console.log(allergie);
+      console.log(allergiesInput);
 }
 function removeAllergie(allergie){
 //remove the allergie from list
@@ -155,11 +190,11 @@ function removeAllergie(allergie){
   filterFoodList();
   }
 
+
 //funtions for meattypes
 function addMeattype(meatofchoice){
 //add to list 
 meatTypes.unshift(meatofchoice);
-console.log(meatTypes);
 }
 
 function removeMeattype(meatofchoice){
@@ -168,37 +203,42 @@ const indexOfMeat = meatTypes.indexOf(meatofchoice);
 meatTypes.splice(indexOfMeat, 1); 
 }
 
+//________________--------____----__--------______--
 
-function filterFoodList() {
-    foodCard.innerHTML = "";
-    let filteredFood = fullMenu;
-  
-    // Check if any allergy checkbox is unchecked
-    if (allergiesInput.length > 0) {
-      filteredFood = filteredFood.filter((food) => {
-        return !allergiesInput.some((allergie) => {
-          return food.allergies.includes(allergie);
-        });
-      });
-    }
-    
-  
-    if (meatTypes.length > 0) {
-      filteredFood = filteredFood.filter((food) => {
-        return meatTypes.some((selectedMeat) => food.meatTypes.includes(selectedMeat));
-      });
-    }
-  
-    data = filteredFood;
-  
-    // Check if no filters are selected, then display all food items
-    if (allergiesInput.length === 0 && meatTypes.length === 0) {
-      data = fullMenu;
-    }
-  
-    console.log(data);
-    checkLanguage();
+ //modify the current foodlist with current filters
+ function filterFoodList() {
+  foodCard.innerHTML = "";
+  let filteredFood = fullMenu;
+  if(meatTypes.length===0){
+    meatTypes=["beef", "pork", "seafood", "chicken"];
   }
+  console.log(filteredFood) ;
+  console.log( "i filterfood, steg 1");
+  //first remove all food with any of allergie of choice
+    allergiesInput.forEach((allergie) => {
+      filteredFood = filteredFood.filter((food) => {
+        console.log(filteredFood);
+        console.log("i filterfood, steg 2 när den precis ska filtrerea bort allergi");
+        return !food.allergies.includes(allergie);
+      });
+    })
+    // Filtering foods by selectedMeat
+    filteredFood = filteredFood.filter((food) => {
+      console.log(filteredFood);
+      console.log("i filterfood, steg 3, när den ska filtrera fram köttval");
+      console.log("köttval:");
+      console.log(meatTypes);
+      return meatTypes.some(selectedMeat => food.meatTypes.includes(selectedMeat));
+    });
+  console.log();
+  data = filteredFood;
+
+  // Check if no filters are selected, then display all food items
+  if (meatTypes.length === 0 && allergiesInput.length === 0) {
+    data = fullMenu;
+  }
+  checkLanguage(); ////OBS!!!! Detta är plats för att lägga in funtion för att displaya maten
+}
   
   
 
@@ -237,9 +277,9 @@ function translateEnglish(){
     foodTD.appendChild(newDescription).style.fontFamily="'Poppins', sans-serif";
     newDescription.appendChild(menuChoice);
     foodCard.appendChild(foodTD);
-    menuChoice.appendChild(buyButton);
-    menuChoice.appendChild(timesCourseDisplay);
     menuChoice.appendChild(deleteButton);
+    menuChoice.appendChild(timesCourseDisplay);
+    menuChoice.appendChild(buyButton);
     menuChoice.appendChild(priceDisplay);
     document.querySelector(".side-box").appendChild(divCart);
 
@@ -328,9 +368,6 @@ function translateEnglish(){
 }
 
 //-----------------------------------Sort price Funktion
-//---The functions start by sorting the array by comparing the items against each other one on one and giving them a number, 1 or -1.
-//---Then it sorts them after how many points it got. The one with most points is at the top and the with least is at the bottom. It saves this new list in a new array.
-//---It then says that data is equal to this new array before calling on clearForfoodTD.
 function unsorted(){
   const unsortedFoods = data.toSorted((a, b) => (a.id > b.id ? 1 : -1));
   data=unsortedFoods;
@@ -347,12 +384,6 @@ function sortedDescending(){
   data = sortedFalling
   clearForfoodTD();
 }
-
-//---This listens fo a click on the checkbox with the right id. If it detects a click one of two things will happen.
-//---If the box is checked in then it will start by calling on the function above. It will prosed by making the other sorting checkbox un checked.
-//---It logs data so we can see if anything goes wrong before calling on checkLanguages so everything is shown on screen.
-
-//---If it detects that the box is uncheked by the user then it will run unsorted so everything is sorted by ID. It then calls on checkLanguage so the site can refresh.
 priceAscendingBox.addEventListener("change", () => {
 
   if(priceAscendingBox.checked){ 
@@ -417,9 +448,10 @@ spans.forEach(span => {
     newDescription.appendChild(menuChoice);
     foodCard.appendChild(foodTD);
 
-    menuChoice.appendChild(buyButton);
-    menuChoice.appendChild(timesCourseDisplay);
+
     menuChoice.appendChild(deleteButton);
+    menuChoice.appendChild(timesCourseDisplay);
+    menuChoice.appendChild(buyButton);
     menuChoice.appendChild(priceDisplay);
     document.querySelector(".side-box").appendChild(divCart);
 
@@ -434,6 +466,8 @@ spans.forEach(span => {
         divCart.id ="cart";
         divCart.innerHTML ="Din kundvagn är tom!";
         priceDisplay.innerHTML = "<br>" + currentValue.price + " kr";
+        // priceDisplay.innerHTML = + currentValue.price + " kr &#11044;<br/>" ;
+
 
         // Event Listeners
         buyButton.addEventListener("click", function () {
