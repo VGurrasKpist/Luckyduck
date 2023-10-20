@@ -298,6 +298,7 @@ function translateEnglish(){
         newTitle.innerHTML=currentValue.title.en;
         divCart.id ="cart";
         divCart.innerHTML ="Your shop cart is empty!";
+        updateCart();
         priceDisplay.innerHTML = "<br>" + currentValue.price + " kr";      
         
         
@@ -483,6 +484,7 @@ spans.forEach(span => {
         newTitle.innerHTML=currentValue.title.sv;
         divCart.id ="cart";
         divCart.innerHTML ="Din kundvagn är tom!";
+        updateCart();
         priceDisplay.innerHTML = "<br>" + currentValue.price + " kr";
 
         buyButton.style.marginLeft="1rem"
@@ -608,27 +610,6 @@ function checkLanguage() {
     translateSwedish();
   });
   
-
-
-//Sortera efter pris
-
-
-// function sortedPrise(){
-//   const sortedFoods = data.sort((a, b) => (a.price > b.price ? 1 : -1));
-//   console.log(sortedFoods);
-// }
-
-// sortedPrise()
-
-// function sortedPrise2(){
-//   const sortedFoods = data.sort((a, b) => (a.price > b.price ? -1 : 1));
-//   console.log(sortedFoods);
-// }
-
-// sortedPrise2()
-
-
-
 
 }).catch(function(error){
   console.error("something went wrong with retriving data")
