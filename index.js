@@ -539,28 +539,6 @@ function checkLanguage() {
     translateSwedish();
   });
   
-
-
-//Sortera efter pris
-
-
-// function sortedPrise(){
-//   const sortedFoods = data.sort((a, b) => (a.price > b.price ? 1 : -1));
-//   console.log(sortedFoods);
-// }
-
-// sortedPrise()
-
-// function sortedPrise2(){
-//   const sortedFoods = data.sort((a, b) => (a.price > b.price ? -1 : 1));
-//   console.log(sortedFoods);
-// }
-
-// sortedPrise2()
-
-
-
-
 }).catch(function(error){
   console.error("something went wrong with retriving data")
   console.log(error)
