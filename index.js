@@ -480,11 +480,6 @@ spans.forEach(span => {
         deleteButton.style.marginTop="1rem";
 
 
-
-
-
-
-
         // Event Listeners
         buyButton.addEventListener("click", function () {
           timesCourse++;

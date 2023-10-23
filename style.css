@@ -367,6 +367,9 @@ margin-bottom: -10px;
         display:inline;
     text-align: center;
     }
+    #filterButton{
+        margin-top: 12rem;
+    }
     .over-box{
         background-color: rgba(255, 255, 255, 0.075);
         display:inline;
@@ -406,7 +409,6 @@ margin-bottom: -10px;
         }
         #kundvagnH2{
 
-            margin-top: 2rem;
             font-family: 'Poppins', sans-serif;
             font-size: 16pt;
 
